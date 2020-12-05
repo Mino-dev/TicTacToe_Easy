@@ -89,15 +89,31 @@ public class TicTacToe {
                     input = Integer.parseInt(br.readLine());
                     while (index < 1 || index > 9 || squares[index - 1] != index){
                         if (turn % 2 == 0){
-                            System.out.print("Invalid cell! P1 move: ");
+                            System.out.println("Invalid cell! P1 move: ");
                         }else{
-                            System.out.print("Invalid cell! P2 move: ");
+                            System.out.println("Invalid cell! P2 move: ");
                         }
                     }
-                    if (turn % 2 == 0){
+                    if (turn % 2 != 0){
                         squares[index - 1] = "O";
                     }else{
                         squares[index - 1] = "X"
+                    }
+                    if (check() == 1){
+                        board();
+                        if (turn % 2 != 0){
+                            System.out.println("P1 wins YAY!");
+                        }else{
+                            System.out.println("P2 wins YAY!");
+                        }
+                        break;
+                    }
+                    board();
+                    if (turn != 9){
+                        turn += 1;
+                    }else{
+                        System.out.println("DRAW");
+                        break;
                     }
                 }catch(){
                     System.out.println("Numbers only");
