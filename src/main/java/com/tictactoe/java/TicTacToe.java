@@ -26,6 +26,7 @@ public class TicTacToe {
                 } else {
                     System.out.println("P2 wins YAY!");
                 }
+                board();
                 return true;
             }
         }
@@ -36,6 +37,7 @@ public class TicTacToe {
                 } else {
                     System.out.println("P2 wins YAY!");
                 }
+                board();
                 return true;
             }
         }
@@ -47,6 +49,7 @@ public class TicTacToe {
                 } else {
                     System.out.println("P2 wins YAY!");
                 }
+                board();
                 return true;
             }
         }
