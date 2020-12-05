@@ -8,7 +8,7 @@ public class TicTacToe {
 
     static char[] squares = new char[]{'1', '2', '3', '4', '5', '6', '7', '8', '9'};
     static int turn = 1;
-    static int index;
+    static char index;
 
     public static void board() {
         System.out.println("P1 = O\nP2 = X\n");
@@ -63,14 +63,14 @@ public class TicTacToe {
                     } else {
                         System.out.print("\nP2 move (enter cell index): ");
                     }
-                    index = Integer.parseInt(br.readLine());
+                    index = (char) ('0' + Integer.parseInt(br.readLine()));
                     while (index < 1 || index > 9 || squares[index - 1] != index) {
                         if (turn % 2 == 0) {
                             System.out.println("Invalid cell! P1 move: ");
                         } else {
                             System.out.println("Invalid cell! P2 move: ");
                         }
-                        index = Integer.parseInt(br.readLine());
+                        index = (char) ('0' + Integer.parseInt(br.readLine()));
                     }
                     if (turn % 2 != 0) {
                         squares[index - 1] = 'O';
