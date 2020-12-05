@@ -20,7 +20,7 @@ public class TicTacToe {
     public static boolean check() {
         int[] ranges = new int[]{0, 7, 3};
         for (int i = 0; i < 3; i++) {
-            if (squares[ranges[i]] == squares[ranges[i] + 1] || squares[ranges[i] + 1] == squares[ranges[i] + 2]) {
+            if (squares[ranges[i]] == squares[ranges[i] + 1] && squares[ranges[i] + 1] == squares[ranges[i] + 2]) {
                 if (turn % 2 != 0) {
                     System.out.println("P1 wins YAY!");
                 } else {
@@ -30,7 +30,7 @@ public class TicTacToe {
             }
         }
         for (int i = 0; i < 3; i++) {
-            if (squares[i] == squares[i + 3] || squares[i + 3] == squares[i + 6]) {
+            if (squares[i] == squares[i + 3] && squares[i + 3] == squares[i + 6]) {
                 if (turn % 2 != 0) {
                     System.out.println("P1 wins YAY!");
                 } else {
@@ -41,7 +41,7 @@ public class TicTacToe {
         }
         ranges = new int[]{0, 3, 2};
         for (int i = 0; i < 3; i++) {
-            if (squares[ranges[i]] == squares[4] || squares[4] == squares[ranges[i] + (8 - 2 * i)]) {
+            if (squares[ranges[i]] == squares[4] && squares[4] == squares[ranges[i] + (8 - 2 * i)]) {
                 if (turn % 2 != 0) {
                     System.out.println("P1 wins YAY!");
                 } else {
@@ -55,14 +55,14 @@ public class TicTacToe {
 
     public static void main(String[] args) {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
-            board();
-            if (turn % 2 == 0) {
-                System.out.print("\nP1 move (enter cell index): ");
-            } else {
-                System.out.print("\nP2 move (enter cell index): ");
-            }
             while (turn != 10) {
+                board();
                 try {
+                    if (turn % 2 == 0) {
+                        System.out.print("\nP1 move (enter cell index): ");
+                    } else {
+                        System.out.print("\nP2 move (enter cell index): ");
+                    }
                     index = Integer.parseInt(br.readLine());
                     while (index < 1 || index > 9 || squares[index - 1] != index) {
                         if (turn % 2 == 0) {
@@ -77,29 +77,17 @@ public class TicTacToe {
                     } else {
                         squares[index - 1] = "X"
                     }
+                    turn += 1;
                     if (check()) {
-                        board();
-                        if (turn % 2 != 0) {
-                            System.out.println("P1 wins YAY!");
-                        } else {
-                            System.out.println("P2 wins YAY!");
-                        }
                         break;
                     }
-                    board();
-                    if (turn != 9) {
-                        turn += 1;
-                    } else {
+                    if (turn == 10){
+                        board();
                         System.out.println("DRAW");
                         break;
                     }
                 } catch (NumberFormatException e) {
-                    System.out.println("Numbers only");
-                    if (turn % 2 == 0) {
-                        System.out.println("Invalid cell! P1 move: ");
-                    } else {
-                        System.out.println("Invalid cell! P2 move: ");
-                    }
+                    System.out.println("This is not a number");
                 }
             }
         } catch (IOException ignored) {
