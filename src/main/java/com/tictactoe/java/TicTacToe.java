@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 public class TicTacToe {
 
-    static int[] squares = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
+    static char[] squares = new char[]{'1', '2', '3', '4', '5', '6', '7', '8', '9'};
     static int turn = 1;
     static int index;
 
@@ -73,15 +73,15 @@ public class TicTacToe {
                         index = Integer.parseInt(br.readLine());
                     }
                     if (turn % 2 != 0) {
-                        squares[index - 1] = "O";
+                        squares[index - 1] = 'O';
                     } else {
-                        squares[index - 1] = "X"
+                        squares[index - 1] = 'X';
                     }
                     turn += 1;
                     if (check()) {
                         break;
                     }
-                    if (turn == 10){
+                    if (turn == 10) {
                         board();
                         System.out.println("DRAW");
                         break;
