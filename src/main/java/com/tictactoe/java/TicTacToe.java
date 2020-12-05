@@ -8,34 +8,13 @@ import java.util.Arrays;
 
 public class TicTacToe {
     
-    char[][] field;
-    final int SIDE = 3;
-    int totalMoves;
-    final void initGame() {
-        field = new char[][]{
-                {' ', ' ', ' '},
-                {' ', ' ', ' '},
-                {' ', ' ', ' '}
-        };
-        totalMoves = 9;
-    }
-    public void showField(char symbol) {
+    int [] squares = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
 
-        System.out.print(" ");
-        for (int i = 0; i < SIDE; ++i) {
-            System.out.printf("%2d ", i);
-        }
-        System.out.println("\n ---------");
-        for (int i = 0; i < SIDE; ++i) {
-            System.out.printf("%d| ", i);
-            for (int j = 0; j < SIDE; ++j) {
-                System.out.printf("%c " ,field[i][j]);
-            }
-            System.out.println("|");
-        }
-        System.out.println(" ---------");
-
-        System.out.printf("You are Player[%c]%n", symbol);
+    public void board() {
+        System.out.println("P1 = O\nP2 = X\n");
+        System.out.println(squares[0]+" "+squares[1]+" "+squares[2]);
+        System.out.println(squares[3]+" "+squares[4]+" "+squares[5]);
+        System.out.println(squares[6]+" "+squares[7]+" "+squares[8]);
     }
 
     public boolean checkGame() {
@@ -95,15 +74,38 @@ public class TicTacToe {
         }
         return 0;
     }
-    void playGame(){
-
-        try (BufferedReader br = new BufferedReader(
-                new InputStreamReader(System.in))) {
-            char symbol;
-            boolean playerOne = true;
-            initGame();
+    public static void main(String[] args) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(System.in))) {
+            board();
+            int turn = 1;
+            int input;
+            while (turn != 10){
+                if (turn % 2 == 0){
+                    System.out.print("\nP1 move (enter cell index): ");
+                }else{
+                    System.out.print("\nP2 move (enter cell index): ");
+                }
+                try{
+                    input = Integer.parseInt(br.readLine());
+                    while (index < 1 || index > 9 || squares[index - 1] != index){
+                        if (turn % 2 == 0){
+                            System.out.print("Invalid cell! P1 move: ");
+                        }else{
+                            System.out.print("Invalid cell! P2 move: ");
+                        }
+                    }
+                    if (turn % 2 == 0){
+                        squares[index - 1] = "O";
+                    }else{
+                        squares[index - 1] = "X"
+                    }
+                }catch(){
+                    System.out.println("Numbers only");
+                }
+            }
+            
+            /**
             do {
-                symbol = playerOne ? 'X' : 'O';
                 playerOne = !playerOne;
                 boolean flag  = false;
                 do {
@@ -132,11 +134,9 @@ public class TicTacToe {
                     }
                 } while (!flag);
             } while (!checkGame());
+            */
+            
         } catch (IOException ignored) {}
-    }
-
-    public static void main(String[] args) {
-        new TicTacToe().playGame();
     }
     
 }
