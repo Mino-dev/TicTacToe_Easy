@@ -46,11 +46,7 @@ public class TicTacToe {
             while (turn != 10) {
                 board();
                 try {
-                    if (turn % 2 != 0) {
-                        System.out.print("\nP1 move (enter cell index): ");
-                    } else {
-                        System.out.print("\nP2 move (enter cell index): ");
-                    }
+                    System.out.println(turn % 2 != 0?"\nP1 move (enter cell index): ":"\nP2 move (enter cell index): ");
                     index = (char) ('0' + Integer.parseInt(br.readLine()));
                     while (index < '1' || index > '9' || squares[(index - '0') - 1] != index) {
                         if (turn % 2 != 0) {
@@ -60,11 +56,7 @@ public class TicTacToe {
                         }
                         index = (char) ('0' + Integer.parseInt(br.readLine()));
                     }
-                    if (turn % 2 != 0) {
-                        squares[(index - '0') - 1] = 'O';
-                    } else {
-                        squares[(index - '0') - 1] = 'X';
-                    }
+                    squares[(index - '0') - 1] = turn % 2 != 0?'O':'X';
 
                     if (check()) {
                         board();
