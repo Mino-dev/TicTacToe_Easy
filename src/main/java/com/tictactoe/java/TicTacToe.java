@@ -48,12 +48,10 @@ public class TicTacToe {
                     System.out.print(turn % 2 != 0?"\nP1 move (enter cell index): ":"\nP2 move (enter cell index): ");
                     index = (char) ('0' + Integer.parseInt(br.readLine()));
                     while (index < '1' || index > '9' || squares[(index - '0') - 1] != index) {
-                        if (turn % 2 != 0) {
-                            System.out.print("Invalid cell! P1 move: ");
-                        } else {
-                            System.out.print("Invalid cell! P2 move: ");
-                        }
+                       
+                        System.out.print(turn % 2 != 0 ? "Invalid cell! P1 move: " : "Invalid cell! P2 move: ");
                         index = (char) ('0' + Integer.parseInt(br.readLine()));
+
                     }
                     squares[(index - '0') - 1] = turn % 2 != 0?'O':'X';
 
