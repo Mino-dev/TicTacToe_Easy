@@ -21,32 +21,20 @@ public class TicTacToe {
         int[] ranges = new int[]{0, 7, 3};
         for (int i = 0; i < 3; i++) {
             if (squares[ranges[i]] == squares[ranges[i] + 1] && squares[ranges[i] + 1] == squares[ranges[i] + 2]) {
-                if (turn % 2 != 0) {
-                    System.out.println("P1 wins YAY!");
-                } else {
-                    System.out.println("P2 wins YAY!");
-                }
+                System.out.println(turn % 2 != 0?"P1 wins YAY!":"P2 wins YAY!");
                 return true;
             }
         }
         for (int i = 0; i < 3; i++) {
             if (squares[i] == squares[i + 3] && squares[i + 3] == squares[i + 6]) {
-                if (turn % 2 != 0) {
-                    System.out.println("P1 wins YAY!");
-                } else {
-                    System.out.println("P2 wins YAY!");
-                }
+                System.out.println(turn % 2 != 0?"P1 wins YAY!":"P2 wins YAY!");
                 return true;
             }
         }
         ranges = new int[]{0, 3, 2};
         for (int i = 0; i < 3; i++) {
             if (squares[ranges[i]] == squares[4] && squares[4] == squares[ranges[i] + (8 - 2 * i)]) {
-                if (turn % 2 != 0) {
-                    System.out.println("P1 wins YAY!");
-                } else {
-                    System.out.println("P2 wins YAY!");
-                }
+                System.out.println(turn % 2 != 0?"P1 wins YAY!":"P2 wins YAY!");
                 return true;
             }
         }
