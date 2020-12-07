@@ -57,11 +57,12 @@ public class TicTacToe {
                         index = (char) ('0' + Integer.parseInt(br.readLine()));
                     }
                     squares[(index - '0') - 1] = turn % 2 != 0?'O':'X';
-                    turn += 1;
+
                     if (check()) {
                         board();
                         break;
                     }
+                    turn += 1;
                     if (turn == 10) {
                         board();
                         System.out.println("DRAW");
