@@ -77,11 +77,12 @@ public class TicTacToe {
                     } else {
                         squares[(index - '0') - 1] = 'X';
                     }
-                    turn += 1;
+
                     if (check()) {
                         board();
                         break;
                     }
+                    turn += 1;
                     if (turn == 10) {
                         board();
                         System.out.println("DRAW");
