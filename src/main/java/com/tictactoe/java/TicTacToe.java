@@ -18,9 +18,9 @@ public class TicTacToe {
     }
 
     public static boolean check() {
-        int[] ranges = new int[]{0, 7, 3};
-        for (int i = 0; i < 3; i++) {
-            if (squares[ranges[i]] == squares[ranges[i] + 1] && squares[ranges[i] + 1] == squares[ranges[i] + 2]) {
+
+        for (int i = 0; i < 7; i += 3) {
+            if (squares[i] == squares[i + 1] && squares[i + 1] == squares[i + 2]) {
                 System.out.println(turn % 2 != 0?"P1 wins YAY!":"P2 wins YAY!");
                 return true;
             }
@@ -31,9 +31,8 @@ public class TicTacToe {
                 return true;
             }
         }
-        ranges = new int[]{0, 3, 2};
-        for (int i = 0; i < 3; i++) {
-            if (squares[ranges[i]] == squares[4] && squares[4] == squares[ranges[i] + (8 - 2 * i)]) {
+        for (int i = 0; i < 3; i += 2) {
+            if (squares[i] == squares[4] && squares[4] == squares[i + (8 - 2 * i)]) {
                 System.out.println(turn % 2 != 0?"P1 wins YAY!":"P2 wins YAY!");
                 return true;
             }
